@@ -1,0 +1,7 @@
+Examples here are taken from the raspberry pi foundation's physical computing tutorial
+
+https://www.raspberrypi.org/learning/physical-computing-with-python/
+
+Those in gpiozero are direct from the tutorial
+Those in gpio are ports to the original gpio lib I did in order to compare against the new library
+
