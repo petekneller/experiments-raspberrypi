@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+sudo /home/pi/bin/amm ./using_pi4j.sc

@@ -1,0 +1,45 @@
+#! /usr/bin/env python
+
+import RPi.GPIO as GPIO
+from numpy import zeros
+from time import sleep, time
+
+trigger = 17
+echo = 18
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(trigger, GPIO.OUT)
+GPIO.setup(echo, GPIO.IN)
+
+def distance():
+  // clear trigger
+  GPIO.output(trigger, 0)
+  sleep(0.000002)
+
+  // perform a 10 microsecond pulse
+  GPIO.output(trigger, 1)
+  sleep(0.00001)
+  GPIO.output(trigger, 0)
+
+  def nop(): return 0
+
+  while GPIO.input(echo) == 0:
+    nop()
+  rise_time = time()
+  while GPIO.input(echo) == 1:
+    nop()
+  fall_time = time()
+
+  return (fall_time - rise_time) * 340 / 2
+
+
+N = 1000
+out = zeros(N)
+
+print('Performing {} iterations'.format(N))
+for i in range(N):
+  out[i] = distance()
+  print('{}: {} m'.format(i, out[i]))
+
+GPIO.cleanup()
+  
