@@ -12,11 +12,11 @@ GPIO.setup(trigger, GPIO.OUT)
 GPIO.setup(echo, GPIO.IN)
 
 def distance():
-  // clear trigger
+  # clear trigger
   GPIO.output(trigger, 0)
   sleep(0.000002)
 
-  // perform a 10 microsecond pulse
+  # perform a 10 microsecond pulse
   GPIO.output(trigger, 1)
   sleep(0.00001)
   GPIO.output(trigger, 0)
