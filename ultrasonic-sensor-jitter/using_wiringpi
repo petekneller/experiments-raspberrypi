@@ -2,6 +2,7 @@
 
 gcc ./using_wiringpi.c -lwiringPi -o using_wiringpi.bin
 
+gpio unexportall
 gpio export 17 out
 gpio export 18 in
 ./using_wiringpi.bin
