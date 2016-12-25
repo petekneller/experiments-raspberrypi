@@ -1,4 +1,5 @@
 import com.pi4j.io.gpio._
+import com.pi4j.wiringpi._
 import java.time.Instant
 import java.time.temporal.ChronoUnit.NANOS
 
@@ -6,6 +7,7 @@ object UsingPi4j {
 
   def main(): Unit = {
 
+                                GpioUtil.enableNonPrivilegedAccess()
 				GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING))
 
 				val controller = GpioFactory.getInstance()
