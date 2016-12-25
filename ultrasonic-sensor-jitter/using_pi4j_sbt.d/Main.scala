@@ -1,3 +1,6 @@
-object Main extends App {
-  def main(args: String*): Unit = UsingPi4j.main()
+package usingPi4j {
+
+  object Main extends App {
+    UsingPi4j.main()
+  }
 }

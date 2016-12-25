@@ -3,9 +3,11 @@ import com.pi4j.wiringpi._
 import java.time.Instant
 import java.time.temporal.ChronoUnit.NANOS
 
-object UsingPi4j {
+package usingPi4j {
 
-  def main(): Unit = {
+  object UsingPi4j {
+
+    def main(): Unit = {
 
                                 GpioUtil.enableNonPrivilegedAccess()
 				GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING))
@@ -38,5 +40,6 @@ object UsingPi4j {
 				(0 until N) foreach { i =>
 					println(s"$i: ${distance()} m")
 				}
+    }
   }
 }
