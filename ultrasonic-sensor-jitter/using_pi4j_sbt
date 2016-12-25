@@ -3,4 +3,10 @@
 gpio unexportall
 gpio export 17 out
 gpio export 18 in
-(cd using_pi4j_sbt.d; sbt run)
+
+# embedded in SBT
+# (cd using_pi4j_sbt.d; sbt run)
+
+# compiled into a jar
+(cd using_pi4j_sbt.d; sbt one-jar)
+java -jar using_pi4j_sbt.d/target/scala-2.10/using-pi4j_2.10-dev-one-jar.jar
