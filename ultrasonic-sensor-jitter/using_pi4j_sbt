@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+
+gpio unexportall
+gpio export 17 out
+gpio export 18 in
+(cd using_pi4j_sbt.d; sbt run)
