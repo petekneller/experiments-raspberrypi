@@ -34,9 +34,13 @@ address = 0x68       # This is the address value read via the i2cdetect command
 bus.write_byte_data(address, power_mgmt_1, 0)
 
 N = int(sys.argv[1])
+times = []
 last_time = clock()
 for i in range(N):
   take_sample()
   now = clock()
-  print now - last_time
+  times.append(now - last_time)
   last_time = now
+
+for t in times:
+  print t

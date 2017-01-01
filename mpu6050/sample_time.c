@@ -31,17 +31,23 @@ int main(int argc, char* argv[])
   }
 
   fd = wiringPiI2CSetup (0x68);
-  wiringPiI2CWriteReg8 (fd,0x6B,0x00);//disable sleep mode 
+  wiringPiI2CWriteReg8 (fd,0x6B,0x00); //disable sleep mode 
   
   clock_t previous_time = clock();
   int N = atoi(argv[1]);
+  double times[N];
   int i;
   for (i = 0; i < N; i++)
   {
     take_sample();
     clock_t now = clock();
-    printf("%e\n", ((double) (now - previous_time)) / CLOCKS_PER_SEC);
+    times[i] = ((double) (now - previous_time)) / CLOCKS_PER_SEC;
     previous_time = now; 
+  }
+
+  for (i = 0; i < N; i++)
+  {
+    printf("%e\n", times[i]);
   }
   
   return 0;
