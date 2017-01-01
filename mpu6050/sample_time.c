@@ -4,10 +4,6 @@
 #include  <time.h>
 
 int fd;
-int acclX, acclY, acclZ;
-int gyroX, gyroY, gyroZ;
-double acclX_scaled, acclY_scaled, acclZ_scaled;
-double gyroX_scaled, gyroY_scaled, gyroZ_scaled;
 
 int read_word_2c(int addr)
 {
