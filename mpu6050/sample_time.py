@@ -3,6 +3,7 @@
 import smbus
 from time import clock
 from numpy import zeros, amin, amax, mean, std
+import sys
 
 # Power management registers
 power_mgmt_1 = 0x6b
@@ -32,19 +33,10 @@ address = 0x68       # This is the address value read via the i2cdetect command
 # Now wake the 6050 up as it starts in sleep mode
 bus.write_byte_data(address, power_mgmt_1, 0)
 
-N = 1000
-sample_times = zeros(N)
+N = int(sys.argv[1])
+last_time = clock()
 for i in range(N):
-  print take_sample()
-  sample_times[i] = clock()
-
-deltas = zeros(N-1)
-for i in range(0, len(sample_times)-1):
-  deltas[i] = sample_times[i+1] - sample_times[i]
-  
-
-print "Loop times for ", N, " samples"
-print "Minimum: ", amin(deltas), " seconds"
-print "Maximum: ", amax(deltas), " seconds"
-print "Mean: ", mean(deltas), " seconds"
-print "Std dev: ", std(deltas), " seconds"
+  take_sample()
+  now = clock()
+  print now - last_time
+  last_time = now

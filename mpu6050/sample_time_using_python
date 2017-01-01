@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+python sample_time.py 1000 | ./stats
