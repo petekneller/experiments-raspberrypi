@@ -7,7 +7,7 @@ inputStrings = sys.stdin.readlines()
 inputFloats = map(lambda (s): float(s.rstrip('\n')), inputStrings)
 
 print "Time taken to read a sample over ", len(inputFloats), " tests"
-print "Minimum: ", amin(inputFloats), " seconds"
-print "Maximim: ", amax(inputFloats), " seconds"
-print "Mean: ", mean(inputFloats), " seconds"
-print "Std dev: ", std(inputFloats), " seconds"
+print "Minimum: ", amin(inputFloats) * 1e6, " microseconds"
+print "Maximim: ", amax(inputFloats) * 1e6, " microseconds"
+print "Mean: ", mean(inputFloats) * 1e6, " microseconds"
+print "Std dev: ", std(inputFloats) * 1e6, " microseconds"
