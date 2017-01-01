@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+
+# JVM messages go to std error
+amm sample_time.sc 1000 2> /dev/null | ./stats
