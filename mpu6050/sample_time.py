@@ -33,7 +33,6 @@ address = 0x68       # This is the address value read via the i2cdetect command
 bus.write_byte_data(address, power_mgmt_1, 0)
 
 N = 1000
-starttime = clock()
 sample_times = zeros(N)
 for i in range(N):
   print take_sample()
