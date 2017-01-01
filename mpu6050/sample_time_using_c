@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+
+if [ -f sample_time.bin ]; then rm sample_time.bin; fi;
+gcc -lwiringPi -lm -o sample_time.bin sample_time.c
+
+./sample_time.bin 1000 | ./stats
