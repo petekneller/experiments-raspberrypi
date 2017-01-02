@@ -6,6 +6,7 @@ import System.nanoTime
 import math.pow
 
 val mpu = I2C.wiringPiI2CSetup(0x68)
+//I2C.wiringPiI2CWriteReg8(mpu, 26, 0x07) // set LP filter off
 I2C.wiringPiI2CWriteReg8(mpu, 107, 0x00) // wake up device
 
 def readGyroX(): Double = {
