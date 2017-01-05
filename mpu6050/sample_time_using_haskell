@@ -1,4 +1,4 @@
-#! /bin/env sh
+#! /usr/bin/env sh
 
 ghc sample_time.hs -o sample_time.hsbin
 ./sample_time
