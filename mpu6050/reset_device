@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+
+gcc -lwiringPi -o target/reset_device.cbin reset_device.c
+target/reset_device.cbin
