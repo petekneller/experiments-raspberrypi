@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+
+gcc -o target/check_system_clock.cbin check_system_clock.c
+target/check_system_clock.cbin
