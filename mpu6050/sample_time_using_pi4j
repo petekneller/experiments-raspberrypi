@@ -1,4 +1,5 @@
 #! /usr/bin/env sh
 
+./reset_device
 # JVM messages go to std error
 amm sample_time.sc 1000 2> /dev/null | ./stats

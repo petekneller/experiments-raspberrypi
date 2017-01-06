@@ -1,3 +1,4 @@
 #! /usr/bin/env sh
 
+./reset_device
 python sample_time.py 1000 | ./stats
