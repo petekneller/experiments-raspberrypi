@@ -1,18 +1,23 @@
 module Main where
 
-import System.IO.SMBus
+import Data.Time.Clock
 import Data.Bits
-import System.CPUTime
 import Text.Printf
-import Criterion.Main
+import System.IO.SMBus
+import System.Environment
 
 dev = Device 0x68
-sample = withSMBus 1 $ \bus -> do
-  _ <- write_byte_data bus dev '\x6B' '\x00' -- wake up device
+
+sampleTime bus = do
+  t1 <- getCurrentTime
   hi <- read_byte_data bus dev '\x43'
   lo <- read_byte_data bus dev '\x44'
-  return $ hi `shiftL` 8 + lo
+  t2 <- getCurrentTime
+  return $ ((realToFrac ((utctDayTime t2) - (utctDayTime t1))) :: Double)
 
-main = defaultMain [
-  bench "sample" $ nfIO sample
-]
+main = withSMBus 1 $ \bus -> do
+  args <- getArgs
+  let n = (read $ head args) :: Int
+  _ <- write_byte_data bus dev '\x6B' '\x00' -- wake up device
+  times <- mapM (\_ -> sampleTime bus) $ take n (repeat 1)
+  mapM (\time -> putStrLn $ printf "%f" time) times

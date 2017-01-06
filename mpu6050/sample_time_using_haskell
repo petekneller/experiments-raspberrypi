@@ -1,4 +1,6 @@
 #! /usr/bin/env sh
 
-ghc sample_time.hs -o sample_time.hsbin
-./sample_time
+ghc sample_time.hs -outputdir target -o target/sample_time.hsbin
+
+./reset_device
+target/sample_time.hsbin 1000 | ./stats
