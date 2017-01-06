@@ -1,0 +1,5 @@
+#! /usr/bin/env sh
+
+if [ -f fetch_from_fifo.hsbin ]; then rm fetch_from_fifo.hsbin; fi;
+ghc fetch_from_fifo.hs -o fetch_from_fifo.hsbin
+./fetch_from_fifo.hsbin
