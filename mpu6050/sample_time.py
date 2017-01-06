@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import smbus
-from time import clock
+from time import time
 from numpy import zeros, amin, amax, mean, std
 import sys
 
@@ -35,10 +35,10 @@ bus.write_byte_data(address, power_mgmt_1, 0)
 
 N = int(sys.argv[1])
 times = []
-last_time = clock()
+last_time = time()
 for i in range(N):
   take_sample()
-  now = clock()
+  now = time()
   times.append(now - last_time)
   last_time = now
 
