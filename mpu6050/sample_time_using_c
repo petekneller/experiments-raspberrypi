@@ -2,4 +2,5 @@
 
 gcc -lwiringPi -lm -o target/sample_time.cbin sample_time.c
 
+./reset_device
 target/sample_time.cbin 1000 | ./stats

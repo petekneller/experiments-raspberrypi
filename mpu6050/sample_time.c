@@ -1,6 +1,5 @@
 #include  <wiringPiI2C.h>
 #include  <stdio.h>
-#include  <math.h>
 #include  <time.h>
 
 int fd;
@@ -32,17 +31,23 @@ int main(int argc, char* argv[])
 
   fd = wiringPiI2CSetup (0x68);
   wiringPiI2CWriteReg8 (fd,0x6B,0x00); //disable sleep mode 
-  
-  clock_t previous_time = clock();
+
   int N = atoi(argv[1]);
   double times[N];
+
+  struct timespec previous = {};
+  clock_gettime(CLOCK_REALTIME, &previous);
+
   int i;
   for (i = 0; i < N; i++)
   {
     take_sample();
-    clock_t now = clock();
-    times[i] = ((double) (now - previous_time)) / CLOCKS_PER_SEC;
-    previous_time = now; 
+    struct timespec now = {};
+    clock_gettime(CLOCK_REALTIME, &now);
+    double delta_sec = ((double)now.tv_sec) - ((double)previous.tv_sec);
+    long delta_nano = now.tv_nsec - previous.tv_nsec;
+    times[i] = delta_sec + ((double)delta_nano / 1e9);
+    previous = now; 
   }
 
   for (i = 0; i < N; i++)
