@@ -1,4 +1,6 @@
 #! /usr/bin/env sh
 
 ghc fetch_from_fifo.hs -outputdir target -o target/fetch_from_fifo.hsbin
+
+./reset_device
 target/fetch_from_fifo.hsbin
