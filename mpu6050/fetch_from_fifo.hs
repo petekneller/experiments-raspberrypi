@@ -25,7 +25,7 @@ doIt bus dev = do
 main = withSMBus 1 $ \bus -> do
   _ <- write_byte_data bus dev '\x6B' '\x00' -- wake up device
   _ <- write_byte_data bus dev '\x23' '\x40' -- enable gyro X to FIFO
-  _ <- write_byte_data bus dev '\x6A' '\x40' -- enable FIFO
   _ <- write_byte_data bus dev '\x1A' '\x00' -- set DLPF off
   _ <- write_byte_data bus dev '\x19' ((toEnum 7) :: Char) -- set sampling divider = x + 1
+  _ <- write_byte_data bus dev '\x6A' '\x40' -- enable FIFO
   mapM_ (\_ -> doIt bus dev) $ repeat 1
