@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+
+gcc -lwiringPi -o target/fetch_from_fifo.cbin fetch_from_fifo.c
+
+./reset_device
+target/fetch_from_fifo.cbin
