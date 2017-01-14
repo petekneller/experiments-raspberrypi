@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+
+gcc -o target/fetch_from_fifo_block.cbin fetch_from_fifo_block.c
+
+./reset_device
+target/fetch_from_fifo_block.cbin
